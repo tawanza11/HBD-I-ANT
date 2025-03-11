@@ -10,6 +10,7 @@
             background-color: #ffccff;
             font-family: Arial, sans-serif;
             overflow: hidden;
+            margin: 0;
         }
         h1 {
             font-size: 50px;
@@ -45,21 +46,41 @@
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
         }
+        #wishes img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>สุขสันต์วันเกิด! 🎉🎂</h1>
-    <p>ขอให้วันนี้เป็นวันที่เต็มไปด้วยความสุขและรอยยิ้ม!</p>
+    <h1>Happy Birthday! 🎉🎂</h1>   
+    <p>ไอเชี้ยแก่ไอเฟ่วรีบโตทำไม!</p>
     <div id="balloons"></div>
     <audio autoplay loop>
         <source src="happy_birthday.mp3" type="audio/mpeg">
+        <source src="happy_birthday.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
     </audio>
     <div id="message-box">
-        <h2>ฝากคำอวยพร 🎊</h2>
-        <textarea id="wish" rows="4" style="width: 100%;"></textarea>
-        <button onclick="addWish()">ส่งคำอวยพร</button>
-        <div id="wishes"></div>
+        <h2>คำอวยพรของคุณ</h2>
+        <div>มีความสุขมากๆโตไวๆ คบกับแฟนนานๆเด้อ
+            ขอให้สอบผ่านมีตังเยอะๆเด้อ ลูกเด้ก แดกของอร่อยๆ
+            ขอให้มีคนรักอยู่ตลอดเวลา
+        </div>
+        <img src="https://scontent-bkk1-2.xx.fbcdn.net/v/t39.30808-6/482134780_1692985244760028_8145296166586505839_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=rcr55RfZJrEQ7kNvgHm-O4n&_nc_oc=AdgFGZylBdPVvFjTmNpaRxzxScc-mzsPQ9mkRhj_8fNlzKTveWZZ3KT6pczT_y5Vop8&_nc_zt=23&_nc_ht=scontent-bkk1-2.xx&_nc_gid=AX7Jj8MiQbzyAxH_WDDbFDv&oh=00_AYEyz_qrGv1Njs7orb5c-277o7oVAe24P4U7636EqMwsIA&oe=67D669D4" alt="Wish Image">
     </div>
+    
+    <style>
+        #message-box img {
+            max-width: 50%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+    
     <script>
         function createBalloon() {
             const balloon = document.createElement("div");
@@ -70,16 +91,14 @@
             document.getElementById("balloons").appendChild(balloon);
             setTimeout(() => balloon.remove(), 5000);
         }
+        
+        // สร้างบอลลูนตลอดเวลา
         setInterval(createBalloon, 500);
-        function addWish() {
-            let wishText = document.getElementById("wish").value;
-            if (wishText.trim() !== "") {
-                let wishDiv = document.createElement("p");
-                wishDiv.textContent = wishText;
-                document.getElementById("wishes").appendChild(wishDiv);
-                document.getElementById("wish").value = "";
-            }
-        }
+        
+        // สร้างเพลงที่เล่นตลอดเวลา
+        const audio = new Audio("happy_birthday.mp3");
+        audio.loop = true;
+        audio.play();
     </script>
 </body>
 </html>
